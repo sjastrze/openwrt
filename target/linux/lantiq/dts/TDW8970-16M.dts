@@ -158,42 +158,37 @@
 		num-chipselects = <1>;
 		cs-gpios = <&gpio 10 1>;
 
-	m25p80@4 {
-		#address-cells = <1>;
-		#size-cells = <1>;
-		compatible = "jedec,spi-nor";
-		reg = <4 0>;
-		spi-max-frequency = <33250000>;
-		m25p,fast-read;
+	m25p80@0 {
+			#address-cells = <1>;
+			#size-cells = <1>;
+			compatible = "w25q128", "m25p80";
+			reg = <0 0>;
+			linux,modalias = "w25q128";
+			spi-max-frequency = <1000000>;
 
-		partitions {
-				compatible = "fixed-partitions";
-				#address-cells = <1>;
-				#size-cells = <1>;
-
-				partition@0 {
-					reg = <0x0 0x20000>;
-					label = "u-boot";
-					read-only;
-				};
-
-				partition@20000 {
-					reg = <0x20000 0xfae000>;
-					label = "firmware";
-				};
-
-				partition@fce000 {
-					reg = <0xfce000 0x2000>;
-					label = "uboot-env";
-					read-only;
-				};
-
-				ath9k_cal: partition@fd0000 {
-					reg = <0xfd0000 0x30000>;
-					label = "boardconfig";
-					read-only;
-				};
+			partition@0 {
+				reg = <0x0 0x20000>;
+				label = "u-boot";
+				read-only;
 			};
+
+			partition@20000 {
+				reg = <0x20000 0xfae000>;
+				label = "firmware";
+			};
+
+			partition@fce000 {
+				reg = <0xfce000 0x2000>;
+				label = "uboot-env";
+				read-only;
+			};
+
+			ath9k_cal: partition@fd0000 {
+				reg = <0xfd0000 0x30000>;
+				label = "boardconfig";
+				read-only;
+			};
+			
 		};
 
 	
