@@ -144,6 +144,12 @@ static struct flash_layout layouts[] = {
 		.kernel_ep	= 0x80002000,
 		.rootfs_ofs	= 0x140000,
 	}, {
+		.id		= "16Mltq-8Mflsh",
+		.fw_max_len	= 0xfae000,
+		.kernel_la	= 0x80002000,
+		.kernel_ep	= 0x80002000,
+		.rootfs_ofs	= 0x140000,
+	}, {		
 		.id		= "8Mmtk",
 		.fw_max_len	= 0x7a0000,
 		.kernel_la	= 0x80000000,
@@ -160,6 +166,11 @@ static struct board_info boards[] = {
 		.hw_id		= 0x89700001,
 		.hw_rev		= 1,
 		.layout_id	= "8Mltq",
+	}, {
+		.id		= "TD-W8970v1-16m",
+		.hw_id		= 0x89700001,
+		.hw_rev		= 16,
+		.layout_id	= "16Mltq-8Mflsh",
 	}, {
 		.id		= "ArcherC20i",
 		.hw_id		= 0xc2000001,
