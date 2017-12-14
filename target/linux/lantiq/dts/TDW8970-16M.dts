@@ -158,7 +158,7 @@
 		num-chipselects = <1>;
 		cs-gpios = <&gpio 10 1>;
 
-	m25p80@0 {
+		m25p80@3 {
 			#address-cells = <1>;
 			#size-cells = <1>;
 			compatible = "w25q128", "m25p80";
@@ -173,13 +173,18 @@
 			};
 
 			partition@20000 {
-				reg = <0x20000 0xfae000>;
+				reg = <0x20000 0xea0000>;
 				label = "firmware";
 			};
 
-			partition@fce000 {
-				reg = <0xfce000 0x2000>;
-				label = "uboot-env";
+			partition@ec0000 {
+				reg = <0xec0000 0x100000>;
+				label = "dsl_fw";
+			};
+
+			partition@fc0000 {
+				reg = <0xfc0000 0x10000>;
+				label = "config";
 				read-only;
 			};
 
@@ -188,10 +193,7 @@
 				label = "boardconfig";
 				read-only;
 			};
-			
 		};
-
-	
 	};
 	
 	ath9k_eep {
